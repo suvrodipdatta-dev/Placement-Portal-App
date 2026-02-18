@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Registration - Placement Portal</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8eef7;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-box {
+            width: 420px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2a4d8f;
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2a4d8f;
+            border: none;
+            color: white;
+            font-size: 17px;
+            border-radius: 6px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1f3a6e;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #2a4d8f;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="register-box">
+        <h2>Company Registration</h2>
+
+        <form action="/company_register" method="POST">
+
+            <input type="text" name="company_name" placeholder="Company Name" required>
+
+            <input type="email" name="hr_email" placeholder="Company Email" required>
+
+            <input type="password" name="password" placeholder="Create Password" required>
+
+            <input type="text" name="industry" placeholder="Industry Type (IT, Finance, HR, etc.)" required>
+
+            <input type="text" name="location" placeholder="Head Office Location" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <div class="login-link">
+            Already registered? <a href="/login">Login Here</a>
+        </div>
+    </div>
+
+</body>
+</html>

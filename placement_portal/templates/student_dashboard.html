@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
+
+        .section-title {
+            width: 90%;
+            margin: 40px auto 15px auto;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        .drives-container {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            backdrop-filter: blur(12px);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.25);
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 16px;
+            margin: 6px 0;
+        }
+
+        .status {
+            margin-top: 10px;
+            padding: 8px 12px;
+            display: inline-block;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .approved {
+            background: #4CAF50;
+        }
+
+        .pending {
+            background: #FFC107;
+            color: #000;
+        }
+
+        .rejected {
+            background: #E53935;
+        }
+
+        .btn-container {
+            margin-top: 12px;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            color: black;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #e2e2e2;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="header">
+        <h1>Student Dashboard</h1>
+        <p>Explore Drives, Apply & Track Your Status</p>
+    </div>
+
+    <!-- Approved Placement Drives -->
+    <div class="section-title">Approved Placement Drives</div>
+
+    <div class="drives-container">
+
+        <div class="card">
+            <h3>Software Developer – ABC Technologies</h3>
+            <p><strong>Date:</strong> 26 March 2026</p>
+            <p><strong>Location:</strong> Bengaluru</p>
+
+            <div class="btn-container">
+                <button class="btn">Apply Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Data Analyst – Infosys</h3>
+            <p><strong>Date:</strong> 10 April 2026</p>
+            <p><strong>Location:</strong> Pune</p>
+
+            <div class="btn-container">
+                <button class="btn">Apply Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Cloud Engineer – TCS</h3>
+            <p><strong>Date:</strong> 02 May 2026</p>
+            <p><strong>Location:</strong> Hyderabad</p>
+
+            <div class="btn-container">
+                <button class="btn">Apply Now</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Applied Placement Drives + Status -->
+    <div class="section-title">Applied Drives & Status</div>
+
+    <div class="drives-container">
+
+        <div class="card">
+            <h3>Junior Developer – Wipro</h3>
+            <p><strong>Applied On:</strong> 20 Jan 2026</p>
+            <p><strong>Interview Date:</strong> 05 Feb 2026</p>
+
+            <span class="status approved">Approved</span>
+        </div>
+
+        <div class="card">
+            <h3>Business Analyst – Cognizant</h3>
+            <p><strong>Applied On:</strong> 15 Jan 2026</p>
+            <p><strong>Interview Date:</strong> Pending</p>
+
+            <span class="status pending">Pending</span>
+        </div>
+
+        <div class="card">
+            <h3>Web Developer – HCL</h3>
+            <p><strong>Applied On:</strong> 12 Jan 2026</p>
+            <p><strong>Interview Date:</strong> -</p>
+
+            <span class="status rejected">Rejected</span>
+        </div>
+
+    </div>
+
+</body>
+</html>

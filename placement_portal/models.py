@@ -33,6 +33,7 @@ class Company(db.Model):
 
     company_id = db.Column(db.Integer, primary_key=True)
     company_name = db.Column(db.String(200), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
     industry = db.Column(db.String(200))
     location = db.Column(db.String(200))
     hr_email = db.Column(db.String(200), unique=True, nullable=False)
