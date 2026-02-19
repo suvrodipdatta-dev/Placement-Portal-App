@@ -30,18 +30,18 @@ def login():
 
         # --------- Admin Login ---------
         if email == ADMIN_EMAIL and password == ADMIN_PASSWORD:
-            return redirect("/admin/dashboard")
+            return redirect("/admin_dashboard")
 
         # --------- Student Login ---------
         student = Student.query.filter_by(email=email, password=password).first()
         if student:
-            return redirect("/student/dashboard")
+            return redirect("/student_dashboard")
 
         # --------- Company Login ---------
-        company = Company.query.filter_by(email=email, password=password).first()
+        company = Company.query.filter_by(hr_email=email, password=password).first()
         if company:
             if company.is_approved:
-                return redirect("/company/dashboard")
+                return redirect("/company_dashboard")
             else:
                 return "Your company account is waiting for Admin approval."
 
@@ -52,15 +52,33 @@ def login():
 
 
 # ---------- Temporary Dashboards (to avoid errors) ----------
-@app.route("/admin/dashboard")
+@app.route("/admin_dashboard")
 def admin_dashboard():
-    return render_template("admin_dashboard.html")
+    students = Student.query.all()
+    companies = Company.query.all()
 
-@app.route("/student/dashboard")
+    try:
+        pending_companies = Company.query.filter_by(is_approved=False).all()
+    except:
+        pending_companies = []
+
+    jobs = Job.query.all()
+    applications = Application.query.all()
+
+    return render_template(
+        "admin_dashboard.html",
+        students=students,
+        companies=companies,
+        pending_companies=pending_companies,
+        jobs=jobs,
+        applications=applications
+    )
+
+@app.route("/student_dashboard")
 def student_dashboard():
     return render_template("student_dashboard.html")
 
-@app.route("/company/dashboard")
+@app.route("/company_dashboard")
 def company_dashboard():
     return render_template("company_dashboard.html")
 
@@ -112,7 +130,8 @@ def company_register():
             hr_email=email,
             password=password,
             industry=industry,
-            location=location
+            location=location,
+            is_approved=False
         )
 
         db.session.add(new_company)

@@ -37,6 +37,7 @@ class Company(db.Model):
     industry = db.Column(db.String(200))
     location = db.Column(db.String(200))
     hr_email = db.Column(db.String(200), unique=True, nullable=False)
+    is_approved = db.Column(db.Boolean, default=False)
 
     jobs = db.relationship("Job", back_populates="company")
 
