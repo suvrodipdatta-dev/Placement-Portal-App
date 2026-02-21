@@ -52,12 +52,14 @@ class Job(db.Model):
     __tablename__ = "jobs"
 
     job_id = db.Column(db.Integer, primary_key=True)
+    job_title = db.Column(db.String(200), nullable=False)
     company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"), nullable=False)
     job_role = db.Column(db.String(200), nullable=False)
+    drive_name = db.Column(db.String(200), nullable=False)
     job_description = db.Column(db.Text)
     salary_package = db.Column(db.Float)
     eligibility_cgpa = db.Column(db.Float)
-    skills_required = db.Column(db.Text)
+    status = db.Column(db.String(20), default="pending")   
     posted_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     company = db.relationship("Company", back_populates="jobs")

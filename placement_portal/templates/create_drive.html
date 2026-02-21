@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Drive</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+        .box {
+            width: 50%; margin: auto; background: white; padding: 25px;
+            border-radius: 8px; border: 1px solid #ccc;
+        }
+        input, textarea {
+            width: 100%; padding: 10px; margin-bottom: 12px;
+            border-radius: 5px; border: 1px solid #aaa;
+        }
+        button {
+            padding: 10px 20px; background: green; color: white;
+            border: none; border-radius: 6px; cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Create New Drive</h2>
+
+    <form action="{{ url_for('create_drive', company_id=company_id) }}" method="POST">
+
+        <label>Drive Name</label>
+        <input type="text" name="drive_name" required>
+
+        <label>Job Role</label>
+        <input type="text" name="job_role" required>
+
+        <label>Job Title</label>
+        <input type="text" name="job_title" required>
+
+        <label>Job Description</label>
+        <textarea name="job_description" rows="4"></textarea>
+
+        <label>Eligibility CGPA</label>
+        <input type="float" name="eligibility_cgpa" required>
+
+        <label>Salary</label>
+        <input type="text" name="salary_package">
+
+        <label>Location</label>
+        <input type="text" name="location">
+
+        <button type="submit">Create Drive</button>
+    </form>
+</div>
+
+</body>
+</html>

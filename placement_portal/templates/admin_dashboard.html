@@ -142,12 +142,18 @@
     </div>
 
     <!-- Company Applications -->
+    <!-- Company Applications -->
     <h3>Company Applications</h3>
     <div class="section-box">
         {% for p in pending_companies %}
         <div class="item-row">
             <span>{{ p.company_name }}</span>
-            <button class="btn-approve">Approve</button>
+
+        <!-- APPROVE BUTTON FIXED -->
+        <form action="{{ url_for('approve_company', company_id=p.company_id) }}" method="POST">
+            <button type="submit" class="btn-approve">Approve</button>
+        </form>
+
         </div>
         {% endfor %}
     </div>
@@ -157,23 +163,27 @@
     <div class="section-box">
         <table>
             <tr>
-                <th>Sr No.</th>
+                <th>Sr No</th>
                 <th>Drive Name</th>
                 <th>Actions</th>
             </tr>
 
-            {% for d in drives %}
+            {% for job in jobs %}
             <tr>
-                <td>{{ d.id }}</td>
-                <td>{{ d.drive_name }}</td>
+                <td>{{ job.job_id }}</td>
+                <td>{{ job.drive_name }}</td>
                 <td>
-                    <button class="btn-blue">View Details</button>
-                    <button class="btn-approve">Mark as Complete</button>
-                </td>
-            </tr>
-            {% endfor %}
+                    <a href="{{ url_for('view_drive', job_id=job.job_id) }}" class="btn btn-info">
+                        View Details
+                    </a>
 
-        </table>
+                <form action="{{ url_for('mark_drive_complete', job_id=job.job_id) }}" method="POST" style="display:inline;">
+                    <button class="btn btn-success">Mark as Complete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
     </div>
 
     <!-- Student Applications -->
