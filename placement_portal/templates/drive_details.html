@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Drive Details</title>
+<style>
+    body { font-family: Arial; background:#f4f4f4; padding:20px; }
+    .box { width:90%; margin:auto; background:white; padding:20px; border-radius:8px; }
+    .btn { padding:8px 16px; background:#007bff; color:white; border:none;
+        border-radius:5px; margin-right:10px; }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>{{ job.drive_name }}</h2>
+
+    <p><strong>Job Title:</strong> {{ job.job_role }}</p>
+
+    <p><strong>Job Description:</strong><br>
+    {{ job.job_description }}</p>
+
+    <p><strong>Salary:</strong> {{ job.salary_package }}</p>
+
+    <p><strong>Location:</strong> {{ job.company.location }}</p>
+
+    <a href="/apply/{{ job.job_id }}" class="btn">Apply</a>
+    <a href="/student_dashboard/{{ student.id }}" class="btn">Go Back</a>
+
+</div>
+
+</body>
+</html>

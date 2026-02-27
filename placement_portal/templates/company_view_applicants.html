@@ -1,0 +1,20 @@
+<h2>Update Applications for {{ drive.drive_name }}</h2>
+
+<table border="1">
+    <tr>
+        <th>Student Name</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for app in applications %}
+    <tr>
+        <td>{{ app.student.full_name }}</td>
+        <td>
+            <a href="/company/application/{{ app.application_id }}">view application</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="/company/dashboard/{{ drive.company_id }}">Back</a>

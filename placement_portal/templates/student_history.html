@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Application History</title>
+<style>
+    body { font-family: Arial; background:#f4f4f4; padding:20px; }
+    .container { width:90%; margin:auto; background:white; padding:20px; border-radius:8px; }
+    table { width:100%; border-collapse:collapse; margin-top:15px; }
+    th,td { border:1px solid #999; padding:10px; }
+    th { background:#e8e8e8; }
+    .btn { padding:6px 12px; background:#007bff; color:white; border:none; border-radius:5px; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="/student_dashboard/{{ student.id }}" class="btn">back</a>
+
+    <h2>Student Application History</h2>
+
+    <p><strong>Student Name:</strong> {{ student.full_name }}</p>
+    <p><strong>Department:</strong> {{ student.department }}</p>
+
+    <table>
+        <tr>
+            <th>Drive No.</th>
+            <th>Interview</th>
+            <th>Job Title</th>
+            <th>Results</th>
+            <th>Remark</th>
+        </tr>
+
+        {% for a in applications %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ a.interview_mode }}</td>
+            <td>{{ a.job.job_role }}</td>
+            <td>{{ a.result }}</td>
+            <td>{{ a.remark }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

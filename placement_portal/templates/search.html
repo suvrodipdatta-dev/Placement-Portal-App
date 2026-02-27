@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .search-wrapper {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .search-btn {
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .results-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #eef1ff;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .result-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Search Students / Companies</h3>
+
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search students, companies...">
+        <button class="search-btn" onclick="showResults()">Search</button>
+    </div>
+
+    <div class="results-box" id="resultsBox">
+        <h4>Search Results:</h4>
+        <div id="resultsList"></div>
+    </div>
+
+</div>
+
+<script>
+    function showResults() {
+        const query = document.getElementById("searchInput").value.trim();
+        const resultsBox = document.getElementById("resultsBox");
+        const resultsList = document.getElementById("resultsList");
+
+        if (query === "") {
+            alert("Enter something to search!");
+            return;
+        }
+
+        resultsBox.style.display = "block";
+
+        // TEMPORARY PLACEHOLDER RESULTS
+        resultsList.innerHTML = `
+            <div class="result-item">Result for: <strong>${query}</strong></div>
+            <div class="result-item">Demo Result 1</div>
+            <div class="result-item">Demo Result 2</div>
+        `;
+    }
+</script>
+
+</body>
+</html>

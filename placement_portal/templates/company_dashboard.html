@@ -37,14 +37,6 @@
             border-radius: 6px;
         }
 
-        .section-box {
-            border: 1px solid #ccc;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            background: #fafafa;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -56,24 +48,6 @@
             border: 1px solid #aaa;
         }
 
-        .btn-blue {
-            padding: 6px 14px;
-            background: #dbe9ff;
-            border: 1px solid #005bea;
-            color: #005bea;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .btn-green {
-            padding: 6px 14px;
-            background: #ddffdd;
-            border: 1px solid green;
-            color: green;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
         .btn-create {
             padding: 8px 18px;
             background: #ddffdd;
@@ -82,6 +56,7 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 14px;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -98,55 +73,51 @@
 
     <!-- Upcoming Drives -->
     <h3>Upcoming Drives</h3>
-    <div class="section-box">
 
-        <div style="text-align:right; margin-bottom:10px;">
-            <a href="{{ url_for('create_drive', company_id=company.company_id) }}">
-                Create Drive
-            </a>
-        </div>
+    <a href="{{ url_for('create_drive', company_id=company.company_id) }}">
+        <button class="btn-create">+ Create Drive</button>
+    </a>
 
-        <table>
-            <tr>
-                <th>Sr No.</th>
-                <th>Drive Name</th>
-                <th>Actions</th>
-            </tr>
+    <table border="1">
+        <tr>
+            <th>Job ID</th>
+            <th>Drive Name</th>
+            <th>Actions</th>
+        </tr>
 
-            {% for d in upcoming_drives %}
-            <tr>
-                <td>{{ d.id }}</td>
-                <td>{{ d.drive_name }}</td>
-                <td>
-                    <button class="btn-blue">View Details</button>
-                    <button class="btn-green">Mark as Complete</button>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
+        {% for drive in upcoming_drives %}
+        <tr>
+            <td>{{ drive.job_id }}</td>
+            <td>{{ drive.drive_name }}</td>
+            <td>
+                <a href="/company/drive/{{ drive.job_id }}/applications">view applicants</a> |
+                <a href="/company/drive/{{ drive.job_id }}/close">mark as completed</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 
-    <!-- Closed Drives -->
+    <br>
+
     <h3>Closed Drives</h3>
-    <div class="section-box">
-        <table>
-            <tr>
-                <th>Sr No.</th>
-                <th>Drive Name</th>
-                <th>Actions</th>
-            </tr>
+    <table border="1">
+        <tr>
+            <th>Job ID</th>
+            <th>Drive Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for drive in closed_drives %}
+        <tr>
+            <td>{{ drive.job_id }}</td>
+            <td>{{ drive.drive_name }}</td>
+            <td>
+                <a href="/company/drive/{{ drive.job_id }}/applications">update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 
-            {% for c in closed_drives %}
-            <tr>
-                <td>{{ c.id }}</td>
-                <td>{{ c.drive_name }}</td>
-                <td><button class="btn-blue">Update</button></td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-
-</div>
+</div> <!-- ✅ correct closing div (only ONE needed) -->
 
 </body>
 </html>

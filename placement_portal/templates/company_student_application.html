@@ -1,0 +1,20 @@
+<h2>Student Application</h2>
+
+<p><b>Student Name:</b> {{ app.student.full_name }}</p>
+<p><b>Department:</b> {{ app.student.department }}</p>
+
+<p><b>Drive:</b> {{ app.drive.drive_name }}</p>
+<p><b>Job Title:</b> {{ app.drive.job_title }}</p>
+
+<form action="/company/application/{{ app.application_id }}/update" method="POST">
+    <select name="status">
+        <option value="Applied" {% if app.status=='Applied' %} selected {% endif %}>Applied</option>
+        <option value="Shortlisted" {% if app.status=='Shortlisted' %} selected {% endif %}>Shortlisted</option>
+        <option value="Rejected" {% if app.status=='Rejected' %} selected {% endif %}>Rejected</option>
+    </select>
+
+    <button type="submit">Update Status</button>
+</form>
+
+<br>
+<button onclick="history.back()">Back</button>

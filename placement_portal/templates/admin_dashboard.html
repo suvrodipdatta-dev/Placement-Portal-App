@@ -114,8 +114,10 @@
         <h3>Welcome Admin</h3>
 
         <div class="search-wrapper">
-            <input type="text" class="search-box" placeholder="student, organizations">
-            <button class="search-btn">Search</button>
+            <form action="{{ url_for('search') }}" method="GET" style="display: flex; gap: 10px;">
+                <input type="text" name="query" class="search-box" placeholder="Search students, organizations">
+                <button class="search-btn" type="submit">Search</button>
+            </form>  
         </div>
     </div>
 
@@ -201,11 +203,11 @@
 
             {% for a in applications %}
             <tr>
-                <td>{{ a.id }}</td>
-                <td>{{ a.student_name }}</td>
-                <td>{{ a.drive_name }}</td>
-                <td>{{ a.company_name }}</td>
-                <td>{{ a.date }}</td>
+                <td>{{ a.student.student_id }}</td>
+                <td>{{ a.student.full_name }}</td>
+                <td>{{ a.job.drive_name }}</td>
+                <td>{{ a.job.company.company_name }}</td>
+                <td>{{ a.application_date.strftime("%d-%m-%Y") }}</td>
                 <td><button class="btn-blue">View</button></td>
             </tr>
             {% endfor %}

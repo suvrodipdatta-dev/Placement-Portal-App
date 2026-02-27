@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Company Details</title>
+<style>
+    body { font-family: Arial; background:#f4f4f4; padding:20px; }
+    .box { width:90%; margin:auto; background:white; padding:20px; border-radius:8px; }
+    .drive-box {
+        padding:10px; border:1px solid #aaa; border-radius:6px;
+        display:flex; justify-content:space-between; margin-bottom:12px;
+    }
+    .btn { padding:6px 12px; background:#007bff; color:white; border:none; border-radius:5px; }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>{{ company.name }}</h2>
+
+    <p><strong>Overview</strong></p>
+    <p>{{ company.description }}</p>
+
+    <h3>Current Drives</h3>
+
+    {% for job in jobs %}
+    <div class="drive-box">
+        <span>{{ job.drive_name }}</span>
+        <a href="/drive/{{ job.job_id }}" class="btn">view details</a>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
